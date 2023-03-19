@@ -54,10 +54,7 @@ public class PostServiceImpl implements PostService {
         // get content for page object
         List<Post> listOfPosts = posts.getContent();
 
-        List<PostDto> content = listOfPosts
-                .stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
+        List<PostDto> content = listOfPosts.stream().map(this::mapToDTO).collect(Collectors.toList());
 
         PostResponse postResponse = new PostResponse();
         postResponse.setContent(content);
@@ -71,15 +68,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDto getPostById(Long id) {
-        Post post = postRepository
-                .findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));
+    public PostDto getPostById(long id) {
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Post", "id", id));
         return mapToDTO(post);
     }
 
     @Override
-    public PostDto updatePostById(PostDto postDto, Long id) {
+    public PostDto updatePostById(PostDto postDto, long id) {
 
         // get post by id from the database
         Post post = postRepository
@@ -94,7 +90,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void deletePostById(Long id) {
+    public void deletePostById(long id) {
         Post post = postRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Post", "id", id));

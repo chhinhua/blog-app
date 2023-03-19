@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * @author Chhin_Hua - 17/03
  **/
@@ -50,14 +48,14 @@ public class PostController {
 
     // get post rest api
     @GetMapping("/{id}")
-    public ResponseEntity<PostDto> getPost(@PathVariable(name = "id") Long id) {
-        return ResponseEntity.ok(postService.getPostById(id));
+    public ResponseEntity<PostDto> getPost(@PathVariable(name = "id") long id) {
+        return new ResponseEntity<>(postService.getPostById(id), HttpStatus.OK);
     }
 
     // update post by id rest api
     @PutMapping("/{id}")
     public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto,
-                                              @PathVariable(name = "id") Long id) {
+                                              @PathVariable(name = "id") long id) {
 
         PostDto postResponse = postService.updatePostById(postDto, id);
 
@@ -66,7 +64,7 @@ public class PostController {
 
     // delete post by id rest api
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePost(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<String> deletePost(@PathVariable(name = "id") long id) {
 
         postService.deletePostById(id);
 
