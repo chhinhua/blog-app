@@ -120,4 +120,12 @@ public class CommentServiceImpl implements CommentService {
         return mapToDTO(updateComment);
     }
 
+    @Override
+    public void deleteComment(long postId, long commentId) {
+
+        Comment comment = getComment(postId, commentId);
+
+        commentRepository.delete(comment);
+    }
+
 }
