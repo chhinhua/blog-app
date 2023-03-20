@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostResponse {
-
     private List<PostDto> content;
     private int pageNo;
     private int pageSize;
