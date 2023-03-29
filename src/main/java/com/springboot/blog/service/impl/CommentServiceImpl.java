@@ -85,7 +85,10 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> comments = commentRepository.findByPostId(postId);
 
         // convert list of comment Entities to list of comment DTO's
-        return comments.stream().map(this::mapToDTO).collect(Collectors.toList());
+        return comments
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

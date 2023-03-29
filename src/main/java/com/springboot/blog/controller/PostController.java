@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author Chhin_Hua - 17/03
  **/
@@ -60,7 +62,6 @@ public class PostController {
     @PutMapping("/{id}")
     public ResponseEntity<PostDto> updatePost(@Valid @RequestBody PostDto postDto,
                                               @PathVariable(name = "id") long id) {
-
         PostDto postResponse = postService.updatePostById(postDto, id);
 
         return new ResponseEntity<>(postResponse, HttpStatus.OK);
@@ -70,10 +71,16 @@ public class PostController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePost(@PathVariable(name = "id") long id) {
-
         postService.deletePostById(id);
-
         return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.OK);
+    }
+
+    // get posts by categoryId
+    // http://localhost:8080/api/posts/category/2
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<PostDto>> getPostsByCategory(@PathVariable("id") Long categoryId) {
+        List<PostDto> list = postService.getPostsByCategoryId(categoryId);
+        return ResponseEntity.ok(list);
     }
 
 }
