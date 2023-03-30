@@ -15,14 +15,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "LoginDTO Model Information")
 public class LoginDto {
-
-    @Schema(description = "Blog Login Username of Email")
     @NotEmpty(message = "Username should not be empty.")
     private String usernameOrEmail;
 
-    @Schema(description = "Blog Login Password")
     @NotEmpty(message = "Password should not be empty.")
     private String password;
 

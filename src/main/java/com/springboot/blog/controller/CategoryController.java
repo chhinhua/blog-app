@@ -2,6 +2,7 @@ package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.CategoryDto;
 import com.springboot.blog.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,7 +22,7 @@ import java.util.List;
  **/
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -32,32 +33,32 @@ public class CategoryController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<CategoryDto> addCategory(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryDto) {
         CategoryDto saveCategory = categoryService.addCategory(categoryDto);
         return new ResponseEntity<>(saveCategory, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<CategoryDto> getCategory(@PathVariable(name = "id") Long categoryId) {
+    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable(name = "id") Long categoryId) {
         CategoryDto categoryDto = categoryService.getCategory(categoryId);
         return ResponseEntity.ok(categoryDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> getCategories() {
+    public ResponseEntity<List<CategoryDto>> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("{id}")
-    public ResponseEntity<CategoryDto> editCategory(@PathVariable("id") Long categoryId,
-                                                    @RequestBody CategoryDto categoryDto) {
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryDto> updateCategory(@PathVariable("id") Long categoryId,
+                                                    @Valid @RequestBody CategoryDto categoryDto) {
         CategoryDto updateCategory = categoryService.updateCategory(categoryId, categoryDto);
         return ResponseEntity.ok(updateCategory);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping ("{id}")
+    @DeleteMapping ("/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable("id") Long categoryId) {
         categoryService.deleteCategory(categoryId);
         return ResponseEntity.ok("Category deleted successfully.");

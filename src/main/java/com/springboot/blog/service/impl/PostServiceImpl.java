@@ -85,7 +85,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDto updatePostById(PostDto postDto, long id) {
+    public PostDto  updatePostById(PostDto postDto, long id) {
 
         // get category by id from the database
         Category category = categoryRepository.findById(postDto.getCategoryId())

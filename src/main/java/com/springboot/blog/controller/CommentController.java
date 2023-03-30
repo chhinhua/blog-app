@@ -21,7 +21,7 @@ import java.util.List;
  **/
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1")
 public class CommentController {
 
     private final CommentService commentService;
@@ -66,7 +66,6 @@ public class CommentController {
     @DeleteMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<String> deleteComment(@PathVariable(value = "postId") long postId,
                                                 @PathVariable(value = "commentId") long commentId) {
-
         commentService.deleteComment(postId, commentId);
 
         return new ResponseEntity<>("Comment deleted successfully.", HttpStatus.OK);

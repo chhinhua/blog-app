@@ -14,25 +14,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "Post Response Information")
 public class PostResponse {
-
-    @Schema(description = "Blog Post Response Content")
     private List<PostDto> content;
-
-    @Schema(description = "Blog Post Response Current Page Number")
     private int pageNo;
-
-    @Schema(description = "Blog Post Response Page Size")
     private int pageSize;
-
-    @Schema(description = "Blog Post Response Total Element")
     private long totalElements;
-
-    @Schema(description = "Blog Post Response Total Pages")
     private int totalPages;
-
-    @Schema(description = "Blog Post Response is it the last page?")
     private boolean last;
 
 }
