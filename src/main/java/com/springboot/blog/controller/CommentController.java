@@ -2,6 +2,10 @@ package com.springboot.blog.controller;
 
 import com.springboot.blog.payload.CommentDto;
 import com.springboot.blog.service.CommentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +26,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@Tag(name = "CRUD REST APIs Comment Resource")
 public class CommentController {
 
     private final CommentService commentService;
@@ -30,6 +35,11 @@ public class CommentController {
         this.commentService = commentService;
     }
 
+    @Operation(
+            summary = "Create Comment REST API",
+            description = "Create Comment REST API is used to save comment into database"
+    )
+    @ApiResponse(responseCode = "201", description = "Http Status 201 CREATED")
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<CommentDto> createComment(@PathVariable(name = "postId") long postId,
                                                     @Valid @RequestBody CommentDto commentDto) {
@@ -38,6 +48,11 @@ public class CommentController {
         return new ResponseEntity<>(commentDtoResponse, HttpStatus.CREATED);
     }
 
+    @Operation(
+            summary = "Get All Comment REST API",
+            description = "Get all Comment REST API is used to fetch all the comments from the database"
+    )
+    @ApiResponse(responseCode = "200", description = "Http Status 200 SUCCESS")
     @GetMapping("/posts/{postId}/comments")
     public ResponseEntity<List<CommentDto>> getAllComment(@PathVariable(name = "postId") long postId) {
 
@@ -46,6 +61,11 @@ public class CommentController {
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Get Comment By Id REST API",
+            description = "Get Comment By Id REST API is used to get single comment from the database"
+    )
+    @ApiResponse(responseCode = "200", description = "Http Status 200 SUCCESS")
     @GetMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<CommentDto> getById(@PathVariable(value = "postId") long postId,
                                               @PathVariable(value = "commentId") long commentId) {
@@ -54,6 +74,12 @@ public class CommentController {
         return new ResponseEntity<>(commentDtoResponse, HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Update Comment REST API",
+            description = "Update Comment REST API is used to update a particular comment in the database"
+    )
+    @ApiResponse(responseCode = "200", description = "Http Status 200 SUCCESS")
+    @SecurityRequirement(name = "Bear Authentication")
     @PutMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<CommentDto> updateCommentById(@PathVariable(value = "postId") long postId,
                                                         @PathVariable(value = "commentId") long commentId,
@@ -63,6 +89,12 @@ public class CommentController {
         return new ResponseEntity<>(commentDtoResponse, HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Delete Comment REST API",
+            description = "Delete Comment REST API is used to delete a particular comment from the database"
+    )
+    @ApiResponse(responseCode = "200", description = "Http Status 200 SUCCESS")
+    @SecurityRequirement(name = "Bear Authentication")
     @DeleteMapping("/posts/{postId}/comments/{commentId}")
     public ResponseEntity<String> deleteComment(@PathVariable(value = "postId") long postId,
                                                 @PathVariable(value = "commentId") long commentId) {

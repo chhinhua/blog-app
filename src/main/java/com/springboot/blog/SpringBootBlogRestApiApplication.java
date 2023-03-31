@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 				),
 				license = @License(
 						name = "Apache 2.0",
-						url = "https://www.javaguides.net/license"
+						url = ""
 				)
 		),
 		externalDocs = @ExternalDocumentation(
