@@ -31,11 +31,11 @@ To get started with this project, clone the repository and run it in your local 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/chhinhua/spring-boot-blog-rest-api.git
+   git clone https://github.com/chhinhua/blog-app.git
 2. Navigate to the project directory:
 
    ```
-   cd spring-boot-blog-rest-api
+   cd blog-app
 3. Build and run the project:
 
    ```
@@ -58,7 +58,7 @@ To run the tests, navigate to the project directory and execute the following co
 - Create, read, update, and delete categories
 - Create, read, update, and delete blog posts
 - Create, read, update, and delete comments on blog posts
-- Get a list of blog posts sorted by properties(default "id") with pageNumber, pageSize and sorted direction (default "ASC")
+- Get a list of blog posts sorted by properties (default "id") with pageNumber, pageSize and sorted direction (default "ASC")
 
 ## Built With
 
