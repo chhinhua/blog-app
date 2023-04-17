@@ -39,6 +39,7 @@ public class PostController {
         this.postService = postService;
     }
 
+
     // create blog post
     @Operation(
             summary = "Create Post REST API",
@@ -78,7 +79,6 @@ public class PostController {
         return new ResponseEntity<>(postService.getPostById(id), HttpStatus.OK);
     }
 
-
     // update post
     @Operation(
             summary = "Update Post REST API",
@@ -94,6 +94,7 @@ public class PostController {
 
         return new ResponseEntity<>(postResponse, HttpStatus.OK);
     }
+
 
     // delete post
     @Operation(
