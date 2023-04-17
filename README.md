@@ -12,7 +12,6 @@ This is a RESTful API for managing blog posts and comments built using the Sprin
 - [Features](#features)
 - [Built With](#built-with)
 - [Authors](#authors)
-- [License](#license)
 
 ## Description
 
@@ -56,7 +55,7 @@ To run the tests, navigate to the project directory and execute the following co
 ## Features
 
 - Signup, signin
-- Create, read, update, and delete catetories
+- Create, read, update, and delete categories
 - Create, read, update, and delete blog posts
 - Create, read, update, and delete comments on blog posts
 - Get a list of blog posts sorted by properties(default "id") with pageNumber, pageSize and sorted direction (default "ASC")
