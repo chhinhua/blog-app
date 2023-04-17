@@ -20,7 +20,6 @@ public class RegisterDto {
     private String name;
     private String username;
 
-    @NotEmpty(message = "Email should not be null or empty")
     @Email
     private String email;
 
