@@ -69,6 +69,7 @@ To run the tests, navigate to the project directory and execute the following co
 
 ## Authors
 
-- Chhin Hua - [![Linkedin](src/main/resources/static/LI-In-Bug.png)](https://www.linkedin.com/in/chhin-hua/)
+- Chhin Hua - [Linkedin](https://www.linkedin.com/in/chhin-hua/)
+
    
 
