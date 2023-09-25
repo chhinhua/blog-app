@@ -1,6 +1,6 @@
 # Spring Boot Blog App REST APIs
 
-This is a RESTful API for managing blog posts and comments built using the Spring Boot framework.
+This is a RESTful API for managing blog posts and comments build using the Spring Boot framework.
 
 ## Table of Contents
 - [Description](#description)
